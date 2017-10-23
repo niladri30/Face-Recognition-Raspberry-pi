@@ -1,0 +1,210 @@
+[
+    {
+        "id": "14cd8403.e2cadc",
+        "type": "serial in",
+        "z": "cf7f867b.58a248",
+        "name": "",
+        "serial": "6517c6a0.051018",
+        "x": 86,
+        "y": 74,
+        "wires": [
+            [
+                "b5f3521a.c433"
+            ]
+        ]
+    },
+    {
+        "id": "b5f3521a.c433",
+        "type": "switch",
+        "z": "cf7f867b.58a248",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "someone",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 1,
+        "x": 177,
+        "y": 130,
+        "wires": [
+            [
+                "4bfd559e.a98dfc"
+            ]
+        ]
+    },
+    {
+        "id": "4bfd559e.a98dfc",
+        "type": "change",
+        "z": "cf7f867b.58a248",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "date"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 292,
+        "y": 185,
+        "wires": [
+            [
+                "a8e4a01c.a433b"
+            ]
+        ]
+    },
+    {
+        "id": "a8e4a01c.a433b",
+        "type": "bigexec",
+        "z": "cf7f867b.58a248",
+        "name": "",
+        "command": "python facerec.py",
+        "commandArgs": "",
+        "minError": 1,
+        "minWarning": 1,
+        "cwd": "C:/Users/611620697/AppData/Local/Programs/Python/Python36/face_recognize",
+        "shell": true,
+        "extraArgumentProperty": "",
+        "envProperty": "",
+        "format": "utf8",
+        "limiter": true,
+        "payloadIs": "trigger",
+        "x": 515,
+        "y": 211.5,
+        "wires": [
+            [
+                "e6e230f1.75168"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "f725c53c.90f548",
+        "type": "inject",
+        "z": "cf7f867b.58a248",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 353,
+        "y": 259,
+        "wires": [
+            [
+                "a8e4a01c.a433b"
+            ]
+        ]
+    },
+    {
+        "id": "41b9923c.e18ddc",
+        "type": "debug",
+        "z": "cf7f867b.58a248",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 979,
+        "y": 364,
+        "wires": []
+    },
+    {
+        "id": "e6e230f1.75168",
+        "type": "switch",
+        "z": "cf7f867b.58a248",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "btwn",
+                "v": "80",
+                "vt": "num",
+                "v2": "90",
+                "v2t": "num"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 1,
+        "x": 705,
+        "y": 184,
+        "wires": [
+            [
+                "3924b70a.477d18"
+            ]
+        ]
+    },
+    {
+        "id": "da4a45d0.e23c68",
+        "type": "comment",
+        "z": "cf7f867b.58a248",
+        "name": "For Testing purpose without getting data from sensor",
+        "info": "",
+        "x": 343,
+        "y": 306,
+        "wires": []
+    },
+    {
+        "id": "3924b70a.477d18",
+        "type": "change",
+        "z": "cf7f867b.58a248",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "4",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 885,
+        "y": 235,
+        "wires": [
+            [
+                "41b9923c.e18ddc",
+                "fca7c0e7.033d3"
+            ]
+        ]
+    },
+    {
+        "id": "fca7c0e7.033d3",
+        "type": "serial out",
+        "z": "cf7f867b.58a248",
+        "x": 1031,
+        "y": 291,
+        "wires": []
+    },
+    {
+        "id": "6517c6a0.051018",
+        "type": "serial-port",
+        "z": "",
+        "serialport": "COM4",
+        "serialbaud": "9600",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": false
+    }
+]
