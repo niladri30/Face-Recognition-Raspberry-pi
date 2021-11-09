@@ -1,0 +1,138 @@
+[
+    {
+        "id": "f725c53c.90f548",
+        "type": "inject",
+        "z": "2f985f25.6f7ef8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload",
+                "v": "",
+                "vt": "date"
+            },
+            {
+                "p": "topic",
+                "v": "",
+                "vt": "string"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 435,
+        "y": 588,
+        "wires": [
+            [
+                "97684671.4ed23"
+            ]
+        ]
+    },
+    {
+        "id": "41b9923c.e18ddc",
+        "type": "debug",
+        "z": "2f985f25.6f7ef8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1203,
+        "y": 433,
+        "wires": []
+    },
+    {
+        "id": "97684671.4ed23",
+        "type": "pythonshell in",
+        "z": "2f985f25.6f7ef8",
+        "name": "",
+        "pyfile": "C:/Users/PycharmProjects/New/Face_Recog/face_recog.py",
+        "virtualenv": "",
+        "continuous": false,
+        "stdInData": false,
+        "x": 627,
+        "y": 521,
+        "wires": [
+            [
+                "d7b3210a.69ff28"
+            ]
+        ]
+    },
+    {
+        "id": "a2f0e8b.f6c8498",
+        "type": "switch",
+        "z": "2f985f25.6f7ef8",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "btwn",
+                "v": "70",
+                "vt": "str",
+                "v2": "90",
+                "v2t": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 890,
+        "y": 491,
+        "wires": [
+            [
+                "521e5c6c.073854"
+            ]
+        ]
+    },
+    {
+        "id": "521e5c6c.073854",
+        "type": "change",
+        "z": "2f985f25.6f7ef8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Face Recognized",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1049,
+        "y": 462,
+        "wires": [
+            [
+                "41b9923c.e18ddc"
+            ]
+        ]
+    },
+    {
+        "id": "d7b3210a.69ff28",
+        "type": "split",
+        "z": "2f985f25.6f7ef8",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 786.5,
+        "y": 531,
+        "wires": [
+            [
+                "a2f0e8b.f6c8498"
+            ]
+        ]
+    }
+]
